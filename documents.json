@@ -1,4 +1,5 @@
 {
+  "count": 3,
   "documents": [
     {
       "id_doc": "0000001",
@@ -34,28 +35,23 @@
       ]
     },
     {
-      "id_doc": "YJc9Z0eCh",
+      "id_doc": "60QIPK1u4",
       "mark": false,
       "archived": false,
-      "date": "2019-08-30T13:10:00.494Z",
+      "date": "2019-08-30T14:06:43.536Z",
+      "number": 3,
       "positions": [
         {
-          "position_id": "4KfuxF60w",
+          "position_id": "RXQTE4j46",
           "product_code": "000000000011",
-          "count": "20",
+          "count": "44",
           "price": "150"
         },
         {
-          "position_id": "YlEU4rOXb",
-          "product_code": "000000000011",
-          "count": "20",
-          "price": "150"
-        },
-        {
-          "position_id": "39a2f0HT1",
-          "product_code": "000000000011",
-          "count": "20",
-          "price": "150"
+          "position_id": "gXrsTyKZF",
+          "product_code": "000000000012",
+          "count": "4",
+          "price": "200"
         }
       ]
     }

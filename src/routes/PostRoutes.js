@@ -45,7 +45,7 @@ router.delete("/pricelist", bearer, (req, res) => {
   res.status(200).send({ result: "success" });
 });
 
-router.post("/successdocuments", bearer, (req, res) => {
+router.post("/success_documents", bearer, (req, res) => {
   console.log("Success download Documents from 1C:");
   console.log(req.body);
 
@@ -71,10 +71,10 @@ router.get("/documents", bearer, (req, res) => {
 
   documents = dbDocuments
     .get("documents")
-    .filter({ mark: true })
+    .filter({ archived: false })
     .value();
 
-  res.status(200).send({
+  res.status(200).json({
     result: documents.map(item => item)
   });
 });
@@ -84,6 +84,7 @@ router.post("/document", bearer, (req, res) => {
   //console.log(req.body);
 
   const newDocumentId = shortid.generate();
+  const numberDB = dbDocuments.get("count").value();
 
   dbDocuments
     .get("documents")
@@ -92,19 +93,22 @@ router.post("/document", bearer, (req, res) => {
       mark: false,
       archived: false,
       date: new Date(),
+      number: numberDB + 1,
       positions: []
     })
     .write();
-
-  //console.log(newDocumentId);
 
   const post = dbDocuments.get("documents").find({ id_doc: newDocumentId });
 
   if (post) {
     const postValue = post.value();
+
+    dbDocuments.update("count", n => n + 1).write();
+
     res.json({
       id: postValue.id_doc,
-      date: postValue.date
+      date: postValue.date,
+      number: postValue.number
     });
   } else {
     res.status(400).send({ result: "Error create new document" });
@@ -114,12 +118,32 @@ router.post("/document", bearer, (req, res) => {
 router.delete("/document/:id", bearer, (req, res) => {
   console.log("DELETE document by id");
 
-  dbDocuments
+  const documents = dbDocuments
     .get("documents")
-    .remove({ id_doc: req.params.id })
-    .write();
+    .find({ id_doc: req.params.id })
+    .value();
 
-  res.status(200).send({ result: "success" });
+  if (documents) {
+    dbDocuments
+      .get("documents")
+      .remove({ id_doc: req.params.id })
+      .write();
+
+    const documents = dbDocuments
+      .get("documents")
+      .find({ id_doc: req.params.id })
+      .value();
+
+    if (!documents) {
+      dbDocuments.update("count", n => n - 1).write();
+
+      res.status(200).send({ result: "success" });
+    } else {
+      res.status(400).send({ result: "Error delete document from db" });
+    }
+  } else {
+    res.status(400).send({ result: "Not found document by id" });
+  }
 });
 
 router.post("/position/:id", bearer, (req, res) => {
@@ -163,15 +187,15 @@ router.post("/position/:id", bearer, (req, res) => {
 
 router.delete("/position/:document_id/:position_id", bearer, (req, res) => {
   console.log("Delete position from document by ID");
-  console.log(req.params.document_id);
-  console.log(req.params.position_id);
+  // console.log(req.params.document_id);
+  // console.log(req.params.position_id);
 
   const documents = dbDocuments
     .get("documents")
     .find({ id_doc: req.params.document_id })
     .value();
 
-  console.log(documents);
+  // console.log(documents);
   if (documents) {
     const positions = dbDocuments
       .get("documents")
@@ -198,5 +222,50 @@ router.delete("/position/:document_id/:position_id", bearer, (req, res) => {
     res.status(400).send({ result: "Not found document by id" });
   }
 });
+
+router.post(
+  "/update_position/:document_id/:position_id",
+  bearer,
+  (req, res) => {
+    console.log("Update position from document by ID");
+    // console.log(req.params.document_id);
+    // console.log(req.params.position_id);
+
+    const documents = dbDocuments
+      .get("documents")
+      .find({ id_doc: req.params.document_id })
+      .value();
+
+    // console.log(documents);
+    if (documents) {
+      const positions = dbDocuments
+        .get("documents")
+        .find({ id_doc: req.params.document_id })
+        .get("positions")
+        .find({ position_id: req.params.position_id })
+        .value();
+
+      if (positions) {
+        dbDocuments
+          .get("documents")
+          .find({ id_doc: req.params.document_id })
+          .get("positions")
+          .find({ position_id: req.params.position_id })
+          .assign({ count: req.body.count })
+          .write();
+
+        res.json({
+          success: true
+        });
+      } else {
+        res
+          .status(400)
+          .send({ result: "Not found position in document by id" });
+      }
+    } else {
+      res.status(400).send({ result: "Not found document by id" });
+    }
+  }
+);
 
 module.exports = router;
