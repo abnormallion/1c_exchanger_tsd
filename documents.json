@@ -1,0 +1,63 @@
+{
+  "documents": [
+    {
+      "id_doc": "0000001",
+      "mark": false,
+      "archived": false,
+      "date": "2019-08-29",
+      "number": 1,
+      "positions": [
+        {
+          "product_code": "00000000004",
+          "count": 10,
+          "price": 170.5
+        },
+        {
+          "product_code": "00000000005",
+          "count": 5,
+          "price": 120
+        }
+      ]
+    },
+    {
+      "id_doc": "0000002",
+      "mark": false,
+      "archived": false,
+      "date": "2019-08-29",
+      "number": 2,
+      "positions": [
+        {
+          "product_code": "00000000006",
+          "count": 100,
+          "price": 165.55
+        }
+      ]
+    },
+    {
+      "id_doc": "YJc9Z0eCh",
+      "mark": false,
+      "archived": false,
+      "date": "2019-08-30T13:10:00.494Z",
+      "positions": [
+        {
+          "position_id": "4KfuxF60w",
+          "product_code": "000000000011",
+          "count": "20",
+          "price": "150"
+        },
+        {
+          "position_id": "YlEU4rOXb",
+          "product_code": "000000000011",
+          "count": "20",
+          "price": "150"
+        },
+        {
+          "position_id": "39a2f0HT1",
+          "product_code": "000000000011",
+          "count": "20",
+          "price": "150"
+        }
+      ]
+    }
+  ]
+}

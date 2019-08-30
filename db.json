@@ -1,0 +1,119 @@
+{
+  "products": [
+    {
+      "element": {
+        "product_code": "00000000004",
+        "product_name": "Гипсокартон №1",
+        "product_artikul": "",
+        "ean": [
+          "2000000000015",
+          "2000000000016"
+        ],
+        "count": "340",
+        "price": "170.5"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000005",
+        "product_name": "Гипсокартон №2",
+        "product_artikul": "",
+        "ean": [],
+        "count": "815",
+        "price": "120"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000006",
+        "product_name": "Гипсокартон №3",
+        "product_artikul": "",
+        "ean": [],
+        "count": "900",
+        "price": "165.55"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000007",
+        "product_name": "Краска №1",
+        "product_artikul": "",
+        "ean": [],
+        "count": "80",
+        "price": "60.5"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000008",
+        "product_name": "Краска №2",
+        "product_artikul": "",
+        "ean": [],
+        "count": "80",
+        "price": "66"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000009",
+        "product_name": "Лопата штыковая КМК",
+        "product_artikul": "",
+        "ean": [
+          "2000000000022"
+        ],
+        "count": "86",
+        "price": "276.65"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000010",
+        "product_name": "Шпатель строительный",
+        "product_artikul": "",
+        "ean": [],
+        "count": "99",
+        "price": "170.5"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000011",
+        "product_name": "Тестовый товар",
+        "product_artikul": "",
+        "ean": [],
+        "count": "120",
+        "price": "110"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000013",
+        "product_name": "Саморезы №1",
+        "product_artikul": "",
+        "ean": [],
+        "count": "475",
+        "price": "0.55"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000014",
+        "product_name": "Саморезы с каким-то длинным названием (тест)",
+        "product_artikul": "",
+        "ean": [],
+        "count": "498",
+        "price": "0.28"
+      }
+    },
+    {
+      "element": {
+        "product_code": "00000000019",
+        "product_name": "Плитка 385х385",
+        "product_artikul": "",
+        "ean": [],
+        "count": "2000",
+        "price": "120.5"
+      }
+    }
+  ]
+}
