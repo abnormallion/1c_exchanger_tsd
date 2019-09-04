@@ -11,6 +11,8 @@ const dbPricelist = low(adapterPriceList);
 const adapterDocuments = new FileSync("documents.json");
 const dbDocuments = low(adapterDocuments);
 
+dbDocuments.defaults({ documents: [], count: 0 }).write();
+
 const router = express.Router();
 
 router.post("/pricelist", bearer, (req, res) => {
